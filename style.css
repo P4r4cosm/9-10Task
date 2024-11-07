@@ -1,0 +1,127 @@
+/* Общие стили */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: #121212; /* Темный фон */
+    color: #e0e0e0; /* Светлый текст */
+    padding: 20px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #1e1e1e; /* Темный фон контейнера */
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s ease;
+}
+
+h1 {
+    text-align: center;
+    color: #f5f5f5; /* Светлый заголовок */
+    margin-bottom: 20px;
+}
+
+/* Стиль для кнопок */
+#controls {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 5px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+button:active {
+    background-color: #003f75;
+}
+
+/* Таблица */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #2a2a2a; /* Темный фон для таблицы */
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 12px 15px;
+    border: 1px solid #444; /* Более светлые границы для видимости */
+    text-align: left;
+}
+
+th {
+    background-color: #333;
+    color: #f5f5f5;
+}
+
+td {
+    background-color: #222;
+    color: #e0e0e0;
+}
+
+td:hover {
+    background-color: #333; /* Подсветка при наведении */
+}
+
+#groupAverage {
+    text-align: center;
+    font-size: 18px;
+    margin: 20px 0;
+    color: #ff9800; /* Яркий цвет для среднего балла */
+}
+
+/* Адаптивные стили для мобильных устройств */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 24px;
+    }
+
+    #controls {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    table {
+        font-size: 14px;
+        overflow-x: auto;
+        display: block;
+    }
+
+    th, td {
+        padding: 10px;
+    }
+
+    td {
+        word-wrap: break-word;
+    }
+}
