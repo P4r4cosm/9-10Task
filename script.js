@@ -76,7 +76,7 @@ function showGroupAverage() {
     document.getElementById("groupAverage").textContent = `Средний балл группы: ${groupAverage.toFixed(2)}`;
 }
 
-// Функция для отображения студентов с баллом ниже среднего
+// Функция для отображения студентов с баллом ниже среднего и печати
 function showBelowAverageStudents() {
     const groupAverage = calculateGroupAverage(students);
     const belowAverageStudents = students.filter(student => student.calculateAverageGrade() < groupAverage);
@@ -100,6 +100,9 @@ function showBelowAverageStudents() {
 
         studentTableBody.appendChild(row);
     });
+
+    // Запускаем процесс печати
+        window.print(); 
 }
 
 // Отображаем всех студентов при загрузке страницы
