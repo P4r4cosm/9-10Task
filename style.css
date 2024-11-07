@@ -1,127 +1,120 @@
-/* Общие стили */
-* {
+/* Основные стили */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: #f5f5f5;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    font-family: 'Arial', sans-serif;
-}
-
-body {
-    background-color: #121212; /* Темный фон */
-    color: #e0e0e0; /* Светлый текст */
-    padding: 20px;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 }
 
 .container {
     width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
+    max-width: 900px;
     padding: 20px;
-    background-color: #1e1e1e; /* Темный фон контейнера */
+    background-color: #1e1e1e;
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 }
 
+/* Стили для заголовка */
 h1 {
     text-align: center;
-    color: #f5f5f5; /* Светлый заголовок */
-    margin-bottom: 20px;
+    color: #34b7eb;
 }
 
-/* Стиль для кнопок */
-#controls {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 12px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    margin: 5px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-button:hover {
-    background-color: #0056b3;
-    transform: scale(1.05);
-}
-
-button:active {
-    background-color: #003f75;
-}
-
-/* Таблица */
+/* Стили для таблицы */
 table {
     width: 100%;
-    border-collapse: collapse;
     margin-top: 20px;
-    background-color: #2a2a2a; /* Темный фон для таблицы */
-    border-radius: 8px;
-    overflow: hidden;
+    border-collapse: collapse;
 }
 
 th, td {
-    padding: 12px 15px;
-    border: 1px solid #444; /* Более светлые границы для видимости */
-    text-align: left;
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #333;
 }
 
 th {
     background-color: #333;
-    color: #f5f5f5;
+    color: #fff;
 }
 
 td {
     background-color: #222;
-    color: #e0e0e0;
 }
 
-td:hover {
-    background-color: #333; /* Подсветка при наведении */
+/* Стили для кнопок */
+button {
+    padding: 10px 20px;
+    margin: 10px;
+    background-color: #34b7eb;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-#groupAverage {
-    text-align: center;
-    font-size: 18px;
-    margin: 20px 0;
-    color: #ff9800; /* Яркий цвет для среднего балла */
+button:hover {
+    background-color: #ff9800;
 }
 
-/* Адаптивные стили для мобильных устройств */
-@media (max-width: 768px) {
-    h1 {
-        font-size: 24px;
-    }
+/* Стили для формы добавления студента */
+#addStudentForm {
+    background-color: #333;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+    display: none; /* Форма скрыта по умолчанию */
+}
 
-    #controls {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
+form {
+    display: flex;
+    flex-direction: column;
+}
 
-    button {
-        width: 100%;
-        margin-bottom: 10px;
-    }
+label {
+    margin: 10px 0 5px;
+    font-weight: bold;
+    color: #34b7eb;
+}
 
-    table {
-        font-size: 14px;
-        overflow-x: auto;
-        display: block;
-    }
+input[type="text"], input[type="email"], input[type="number"], input[type="date"] {
+    padding: 10px;
+    border: 1px solid #444;
+    border-radius: 4px;
+    background-color: #222;
+    color: #fff;
+    font-size: 16px;
+}
 
-    th, td {
-        padding: 10px;
-    }
+input[type="text"]:focus, input[type="email"]:focus, input[type="number"]:focus, input[type="date"]:focus {
+    border-color: #ff9800;
+    outline: none;
+}
 
-    td {
-        word-wrap: break-word;
-    }
+button[type="submit"] {
+    background-color: #34b7eb;
+    margin-top: 20px;
+}
+
+button[type="submit"]:hover {
+    background-color: #ff9800;
+}
+
+/* Стиль для блока с информацией о группе */
+#controls {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+#controls button {
+    margin: 0;
 }

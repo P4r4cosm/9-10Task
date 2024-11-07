@@ -1,23 +1,14 @@
 // Класс Student
 class Student {
-    constructor(fullName, birthDate, email, yearOfAdmission, course, groupNumber, sessions) {
+    constructor(fullName, birthDate, email, yearOfAdmission, course, groupNumber, sessions, grades) {
         this.fullName = fullName;
         this.birthDate = birthDate;
         this.email = email;
         this.yearOfAdmission = yearOfAdmission;
         this.course = course;
         this.groupNumber = groupNumber;
-        this.sessions = sessions;  // количество сессий
-        this.grades = this.generateGrades(sessions);
-    }
-
-    // Генерация оценок по 3 на каждую сессию
-    generateGrades(sessions) {
-        let grades = [];
-        for (let i = 0; i < sessions * 3; i++) {
-            grades.push(Math.floor(Math.random() * 4) + 2); // случайные оценки от 2 до 5
-        }
-        return grades;
+        this.sessions = sessions;
+        this.grades = grades;  // Ручной ввод оценок
     }
 
     // Метод для вычисления среднего балла студента
@@ -33,18 +24,19 @@ function calculateGroupAverage(students) {
     return totalAverage / students.length;
 }
 
-// Создаем массив студентов
+// Массив студентов
 const students = [
-    new Student("Иванов Иван", "2002-05-14", "ivanov@mail.com", 2020, 3, "A-01", 2),
-    new Student("Петрова Анна", "2003-07-02", "petrova@mail.com", 2021, 2, "B-02", 3),
-    new Student("Сидоров Алексей", "2001-03-20", "sidorov@mail.com", 2019, 4, "A-01", 1),
-    new Student("Николаев Николай", "2002-10-01", "nikolaev@mail.com", 2020, 3, "A-01", 2),
-    new Student("Смирнова Ольга", "2003-04-15", "smirnova@mail.com", 2021, 2, "B-02", 3),
-    new Student("Кузнецова Мария", "2002-08-19", "kuznetsova@mail.com", 2020, 3, "A-01", 2),
-    new Student("Попов Сергей", "2001-12-30", "popov@mail.com", 2019, 4, "A-01", 1),
-    new Student("Елисеева Вера", "2003-06-25", "eliseeva@mail.com", 2021, 2, "B-02", 3),
-    new Student("Воробьев Дмитрий", "2002-11-13", "vorobyev@mail.com", 2020, 3, "A-01", 2),
-    new Student("Федорова Алина", "2003-09-08", "fedorova@mail.com", 2021, 2, "B-02", 3)
+    new Student("Иванов Иван", "2002-05-14", "ivanov@mail.com", 2020, 3, "A-01", 2, [4, 5, 4, 3, 4, 5]),
+    new Student("Петрова Анна", "2003-07-02", "petrova@mail.com", 2021, 2, "А-01", 3, [5, 4, 3, 5, 4, 5, 4, 3, 5]),
+    new Student("Сидоров Алексей", "2001-03-20", "sidorov@mail.com", 2019, 4, "A-01", 1, [3, 4, 5]),
+    new Student("Кузнецова Мария", "2000-11-10", "kuznetsova@mail.com", 2020, 5, "А-01", 2, [5, 4, 4, 3, 5, 4, 3, 4, 4, 5, 4, 5]),
+    new Student("Михайлов Сергей", "1999-06-25", "mikhailov@mail.com", 2021, 3, "А-01", 3, [2, 3, 5, 4, 3, 5, 4, 4, 4, 3, 2, 5, 4, 3, 4]),
+    new Student("Григорьева Ольга", "2002-01-18", "grigorieva@mail.com", 2022, 2, "А-01", 4, [5, 5, 4, 4, 5, 3, 5, 4, 4, 4, 3, 4]),
+    new Student("Лебедев Виктор", "2001-09-30", "lebedev@mail.com", 2020, 4, "А-01", 1, [4, 5, 3]),
+    new Student("Тимофеева Ирина", "2000-02-15", "timofeeva@mail.com", 2021, 3, "А-01", 3, [5, 4, 5, 3, 5, 4, 4, 4, 5, 4, 5, 4, 3]),
+    new Student("Новиков Дмитрий", "2001-12-04", "novikov@mail.com", 2019, 2, "А-01", 2, [4, 3, 3, 5, 4, 5, 3, 4, 5]),
+    new Student("Жукова Светлана", "2002-04-11", "zhukova@mail.com", 2022, 5, "А-01", 3, [4, 5, 4, 5, 3, 4, 4, 4, 5, 3, 5, 5, 4, 4, 5, 5, 3, 4, 5, 4]),
+
 ];
 
 // Функция для отображения всех студентов
@@ -102,7 +94,40 @@ function showBelowAverageStudents() {
     });
 
     // Запускаем процесс печати
-        window.print(); 
+    setTimeout(() => {
+        window.print(); // Открываем диалог печати
+    }, 500); // Задержка, чтобы данные успели отобразиться
+}
+
+// Функция для добавления нового студента
+function addStudent() {
+    const fullName = document.getElementById("fullName").value;
+    const birthDate = document.getElementById("birthDate").value;
+    const email = document.getElementById("email").value;
+    const yearOfAdmission = parseInt(document.getElementById("yearOfAdmission").value);
+    const course = parseInt(document.getElementById("course").value);
+    const groupNumber = document.getElementById("groupNumber").value;
+    const sessions = parseInt(document.getElementById("sessions").value);
+    const gradesInput = document.getElementById("grades").value;
+
+    // Проверка на то, что количество оценок в 3 раза больше количества сессий
+    const grades = gradesInput.split(",").map(grade => parseInt(grade.trim()));
+    if (grades.length !== sessions * 3) {
+        alert(`Количество оценок должно быть в 3 раза больше количества сессий (всего должно быть ${sessions * 3} оценок).`);
+        return;
+    }
+
+    const newStudent = new Student(fullName, birthDate, email, yearOfAdmission, course, groupNumber, sessions, grades);
+    students.push(newStudent);
+    showAllStudents();  // Обновляем список студентов
+
+    // Закрыть форму
+    document.getElementById("addStudentForm").style.display = "none";
+}
+
+// Функция для отображения формы добавления студента
+function showAddStudentForm() {
+    document.getElementById("addStudentForm").style.display = "block";
 }
 
 // Отображаем всех студентов при загрузке страницы

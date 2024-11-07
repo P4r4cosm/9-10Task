@@ -1,21 +1,54 @@
-<!--Вариант 14-->
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Список студентов</title>
-    <link rel="stylesheet" href="style.css"> <!-- Подключаем внешний CSS файл -->
+    <title>Студенты</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
         <h1>Список студентов</h1>
+
         <div id="controls">
-            <button onclick="showAllStudents()">Показать всех студентов</button>
-            <button onclick="showGroupAverage()">Рассчитать средний балл группы</button>
+            <button onclick="showGroupAverage()">Показать средний балл группы</button>
             <button onclick="showBelowAverageStudents()">Показать студентов с баллом ниже среднего</button>
+            <button onclick="showAddStudentForm()">Добавить студента</button>
         </div>
+
         <p id="groupAverage"></p>
+
+        <!-- Форма для добавления студента -->
+        <div id="addStudentForm" style="display:none;">
+            <h2>Добавить студента</h2>
+            <form onsubmit="event.preventDefault(); addStudent();">
+                <label for="fullName">ФИО:</label><br>
+                <input type="text" id="fullName" required><br>
+
+                <label for="birthDate">Дата рождения:</label><br>
+                <input type="date" id="birthDate" required><br>
+
+                <label for="email">Email:</label><br>
+                <input type="email" id="email" required><br>
+
+                <label for="yearOfAdmission">Год поступления:</label><br>
+                <input type="number" id="yearOfAdmission" required><br>
+
+                <label for="course">Курс:</label><br>
+                <input type="number" id="course" required><br>
+
+                <label for="groupNumber">Номер группы:</label><br>
+                <input type="text" id="groupNumber" required><br>
+
+                <label for="sessions">Количество сессий:</label><br>
+                <input type="number" id="sessions" required><br>
+
+                <label for="grades">Оценки (через запятую):</label><br>
+                <input type="text" id="grades" required><br>
+
+                <button type="submit">Добавить студента</button>
+            </form>
+        </div>
         <table id="studentTable">
             <thead>
                 <tr>
@@ -24,16 +57,19 @@
                     <th>Email</th>
                     <th>Год поступления</th>
                     <th>Курс</th>
-                    <th>Группа</th>
+                    <th>Номер группы</th>
                     <th>Оценки</th>
                     <th>Средний балл</th>
                 </tr>
             </thead>
             <tbody>
-                <!-- Данные будут добавлены с помощью JavaScript -->
+                <!-- Студенты будут отображаться здесь -->
             </tbody>
         </table>
+
+        
     </div>
-    <script src="script.js"></script> <!-- Подключаем внешний JS файл -->
+
+    <script src="script.js"></script>
 </body>
 </html>
